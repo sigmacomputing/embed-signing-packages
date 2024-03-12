@@ -34,13 +34,13 @@ func urlencode(pairs map[string]interface{}) string {
 func main() {
 	params := map[string]interface{}{
 		":nonce":              fmt.Sprintf("%x", rand.Int63()),
-		":email":              "test@test.com",
-		":external_user_id":   "test@test.com",
+		":email":              "xyz@xyz.com",
+		":external_user_id":   "xyz@xyz.com",
 		":client_id":          clientID,
 		":time":               time.Now().Unix(),
 		":session_length":     3600,
 		":mode":               "userbacked",
-		":external_user_team": "Embedded Users,EmbeddingTown",
+		":external_user_team": "EmbedTeam",
 		":account_type":       "embedUser",
 		// custom controls/parameters
 		// "Store-Region": "West",

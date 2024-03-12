@@ -16,13 +16,13 @@ function urlencode(pairs) {
 
 const params = {
   ":nonce": crypto.randomBytes(16).toString('hex'),
-  ":email": "test@test.com",
-  ":external_user_id": "test@test.com",
+  ":email": "xyz@xyz.com",
+  ":external_user_id": "xyz@xyz.com",
   ":client_id": CLIENT_ID,
   ":time": Math.floor(new Date().getTime() / 1000),
   ":session_length": 3600,
   ":mode": "view",
-  ":external_user_team": "Embeddingtown,EmbedTeam",
+  ":external_user_team": "EmbedTeam",
   // custom controls/parameters
   // "Store-Region": "West",
 };

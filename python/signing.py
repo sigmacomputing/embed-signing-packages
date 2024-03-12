@@ -29,7 +29,7 @@ def urlencode(pairs):
 
 params = {
     ":nonce": uuid.uuid4(),
-    ":email": "test@test.com",
+    ":email": "xyz@xyz.com",
     ":external_user_id": "1",
     ":client_id": CLIENT_ID,
     ":time": time.time(),
@@ -38,7 +38,6 @@ params = {
     ":mode": "userbacked",
     ":external_user_team": "Embedded Users,EmbeddingTown",
     ":account_type": "embedUser",
-    
     # custom controls/parameters
     # "Store-Region": "West",
 }

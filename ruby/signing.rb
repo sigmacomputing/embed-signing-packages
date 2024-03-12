@@ -14,13 +14,15 @@ end
 
 params = {
   ":nonce": SecureRandom.uuid,
-  ":email": "test@test.com",
-  ":external_user_id": "test@test.com",
+  ":email": "xyz@xyz.com",
+  ":external_user_id": "xyz@xyz.com",
   ":client_id": CLIENT_ID,
   ":time": Time.now.to_i,
   ":session_length": 3600,
   ":mode": "userbacked",
-  ":external_user_team": "Embeddingtown,EmbedTeam",
+  ":external_user_team": "EmbedTeam",
+  # custom controls/parameters
+  # "Store-Region": "West",
 }
 
 url_with_params = "#{EMBED_PATH}?#{urlencode(params)}"
