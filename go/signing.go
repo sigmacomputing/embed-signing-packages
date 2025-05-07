@@ -9,6 +9,8 @@ import (
 	"math/rand"
 	"strings"
 	"time"
+
+	"github.com/golang-jwt/jwt/v5"
 )
 
 // Replace with your own values
@@ -17,6 +19,29 @@ const (
 	clientID    = "your clientid here"
 	embedSecret = "your secret here"
 )
+
+func generateJWTEmbedURl() string {
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"sub":          "xyz@xyz.com",
+		"jti":          fmt.Sprintf("%x", rand.Int63()),
+		"iat":          time.Now().Unix(),
+		"exp":          time.Now().Add(time.Hour * 1).Unix(),
+		"iss":          clientID,
+		"ver":          "1.1",
+		"aud":          "sigmacomputing",
+		"teams":        [...]string{"EmbedTeam"},
+		"account_type": "Pro",
+	})
+
+	tokenString, err := token.SignedString([]byte(embedSecret))
+
+	if err != nil {
+		panic(err)
+	}
+
+	url := fmt.Sprintf("https://app.sigmacomputing.com/<your org>/<your workbook>?:embed=true&:jwt=%s", tokenString)
+	return url
+}
 
 func myQuote(val string) string {
 	val = strings.ReplaceAll(val, " ", "%20")
@@ -31,7 +56,7 @@ func urlencode(pairs map[string]interface{}) string {
 	return strings.Join(encodedParams, "&")
 }
 
-func main() {
+func secureEmbedUrl() string {
 	params := map[string]interface{}{
 		":nonce":              fmt.Sprintf("%x", rand.Int63()),
 		":email":              "xyz@xyz.com",
@@ -54,5 +79,14 @@ func main() {
 
 	urlWithSignature := urlWithParams + "&" + urlencode(map[string]interface{}{":signature": signature})
 
-	fmt.Println(urlWithSignature)
+	return urlWithSignature
+}
+
+func main() {
+	fmt.Println("=========JWT Embed URL=========")
+	fmt.Println(generateJWTEmbedURl())
+	fmt.Println("==================================")
+	fmt.Println("=========Secure Embed URL=========")
+	fmt.Println(secureEmbedUrl())
+	fmt.Println("==================================")
 }

@@ -1,0 +1,28 @@
+{
+  "name": "embed-signing-package",
+  "version": "1.0.0",
+  "description": "Example functions to sign Sigma embed urls ",
+  "main": "signing.js",
+  "scripts": {
+    "start": "node signing.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sigmacomputing/embed-signing-packages.git#main"
+  },
+  "keywords": [
+    "Sigma",
+    "Embed",
+    "Secure",
+    "Embeds"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sigmacomputing/embed-signing-packages/issues"
+  },
+  "homepage": "https://github.com/sigmacomputing/embed-signing-packages/tree/main#readme",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
+  }
+}
