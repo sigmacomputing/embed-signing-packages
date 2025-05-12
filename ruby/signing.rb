@@ -47,7 +47,7 @@ def generate_jwt_embed_url()
     "account_type": "Pro",
     "teams": ["EmbedTeam"],
   }
-  token = JWT.encode(payload, EMBED_SECRET, 'HS256')
+  token = JWT.encode(payload, EMBED_SECRET, 'HS256', { "kid": CLIENT_ID })
   return "https://app.sigmacomputing.com/<your-org>/<your-workbook>?:embed=true&:jwt=#{token}"
 end
 

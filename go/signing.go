@@ -32,6 +32,7 @@ func generateJWTEmbedURl() string {
 		"teams":        [...]string{"EmbedTeam"},
 		"account_type": "Pro",
 	})
+	token.Header["kid"] = clientID
 
 	tokenString, err := token.SignedString([]byte(embedSecret))
 

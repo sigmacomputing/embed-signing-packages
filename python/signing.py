@@ -67,7 +67,12 @@ def generateJWTEmbedUrl():
         "account_type": "Pro",
         "teams": ["Embedded Users", "EmbeddingTown"],
     }
-    token = jwt.encode(payload=payload, key=EMBED_SECRET, algorithm="HS256")
+    token = jwt.encode(
+        payload=payload,
+        key=EMBED_SECRET,
+        algorithm="HS256",
+        headers={ "kid": CLIENT_ID },
+    )
     url_with_token = (
         "https://app.sigmacomputing.com/<your org>/<your workbook>?:embed=true&:jwt="
         + token
